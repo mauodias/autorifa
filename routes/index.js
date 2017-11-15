@@ -59,6 +59,9 @@ router.post('/criar', function(req, res, next) {
             doc.text("Telefone: ", 25, vertPos+35);
             doc.text("Email: ", 25, vertPos+65);
             var n2 = parseInt(i)+500;
+            if(n2 > 1000){
+                n2 -= 1000;
+            }
             var nums = zeroFill(i, 3) + " / " + n2;
             doc.text(nums, 57, vertPos + 123);
             doc.text(nums, 485, vertPos + 123);
