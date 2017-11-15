@@ -12,19 +12,13 @@ router.get('/', function(req, res, next) {
 router.post('/criar', function(req, res, next) {
     var filename = guid.raw()+'.pdf';
     var doc = new PDFDocument();
-    doc.pipe(fs.createWriteStream(filename));
+    doc.pipe(res);
 
     doc.font('fonts/UbuntuMono-R.ttf')
         .fontSize(25)
         .text('Some text with an embedded font!', 100, 100);
 
     doc.end();
-
-    res.download(filename, 'rifas.pdf', function(err){
-        if(!err){
-            fs.unlink(filename);
-        }
-    })
 });
 
 module.exports = router;

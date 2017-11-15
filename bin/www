@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('rifamaker:server');
+var debug = require('debug')('autorifa:server');
 var http = require('http');
 
 /**
