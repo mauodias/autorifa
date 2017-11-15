@@ -7,7 +7,7 @@ var formidable = require('formidable');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Auto Rifa' });
 });
 
 router.post('/criar', function(req, res, next) {
