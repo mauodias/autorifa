@@ -27,7 +27,10 @@ router.post('/criar', function(req, res, next) {
             .stroke()
             .dash(3, {space:0});
 
-        for (var i = fields.primeiro; i <= fields.ultimo; i++) {
+        var primeiro = fields.primeiro || 1;
+        var ultimo = fields.ultimo || 10;
+        var preco = fields.preco || 5;
+        for (var i = primeiro; i <= ultimo; i++) {
             if(counter == 5){
                 doc.addPage({size:'A4', margin: 20});
                 counter = 0;
@@ -65,7 +68,7 @@ router.post('/criar', function(req, res, next) {
             var nums = zeroFill(i, 3) + " / " + n2;
             doc.text(nums, 57, vertPos + 123);
             doc.text(nums, 485, vertPos + 123);
-            doc.text('R$ ' + parseFloat(Math.round(fields.preco * 100) / 100).toFixed(2).replace('.', ','), 491, vertPos+3);
+            doc.text('R$ ' + parseFloat(Math.round(preco * 100) / 100).toFixed(2).replace('.', ','), 491, vertPos+3);
             doc.text(fields.desc, 163, vertPos+15, {width: 300});
             var data = new Date(fields.dataSorteio);
             doc.text('Resultado obtido pela centena do 1º prêmio da Loteria Federal de ' + data.getDate() + '/' + parseInt(data.getMonth()+1) + '/' + data.getFullYear() + ' às 19h', 163, vertPos + 109, {width: 290});
